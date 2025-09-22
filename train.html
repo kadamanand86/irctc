@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Train Booking</title>
+  <style>
+  	* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background: #fff;
+    }
+
+        /* Header */
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #eee;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+    .nav-container {
+      max-width: 100%;
+      margin: auto;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-left img {
+      height: 70px;
+      box-shadow: 0px 0px 4px 0px #999999;
+      border-radius: 100px;
+    }
+    .navbar ul {
+      display: flex;
+      gap: 50px;
+      list-style: none;
+    }
+    .navbar ul li a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 14px;
+      color: #333;
+      padding: 15px 15px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    .navbar ul li a i {
+      font-size: 20px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .navbar ul li a:hover,
+    .navbar ul li.active a {
+      background: linear-gradient(to right, #c3ddff, #ffe1bc);
+      color: #004aad;
+    }
+    .navbar ul li a:hover i,
+    .navbar ul li.active a i {
+      color: #004aad;
+    }
+    .nav-right a {
+      padding: 8px 16px;
+      margin-left: 10px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .btn-outline {
+      border: 2px solid #ff8c00;
+      color: #ff8c00;
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: #ff8c00; color: #fff;
+    }
+    .btn-primaryLog {
+      background: #ff8c00; color: #fff;
+    }
+    .btn-primaryLog:hover {
+      background: #e67600;
+    }
+
+    /* Footer */
+    .footer {
+      background: #2b2f38;
+      color: #ddd;
+      padding: 50px 20px 20px;
+      margin-top: 100px;
+    }
+    .footer .container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+    .logo {
+      width: 28px;
+      height: auto;
+      border-radius: 30px;
+    }
+    .footer h3, .footer h4, .footer h5 {color: #fff;}
+    .footer-col ul {list-style: none; padding: 0;}
+    .footer-col ul li {margin-bottom: 8px;}
+    .footer-col ul li a {text-decoration: none; color: #bbb; font-size: 14px;}
+    .footer-col ul li a:hover {color: #fff;}
+    .social-icons {display: flex; gap: 12px; margin-top: 15px;}
+    .social-icons a {color: #fff; font-size: 18px; transition: 0.3s;}
+    .social-icons a:hover {color: #ff6600;}
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
+      color: #aaa;
+      border-top: 1px solid #444;
+      padding-top: 20px;
+    }
+    .footer-bottom .bottom-links a {
+      margin: 0 10px;
+      color: #bbb;
+      font-size: 13px;
+    }
+    .footer-bottom .bottom-links a:hover {color: #fff;}
+
+  </style>
+</head>
+<body>
+
+ <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="index.html"><img src="img/logo1.png" alt="Logo"></a>
+      </div>
+      <nav class="navbar">
+        <ul>
+          <li class="active"><a href="#"><i class="fas fa-train"></i><span>Trains</span></a></li>
+          <li><a href="#"><i class="fas fa-bus"></i><span>Bus</span></a></li>
+          <li><a href="#"><i class="fas fa-plane"></i><span>Flights</span></a></li>
+          <li><a href="#"><i class="fas fa-hotel"></i><span>Hotels</span></a></li>
+          <li><a href="#"><i class="fas fa-umbrella-beach"></i><span>Holidays</span></a></li>
+        </ul>
+      </nav>
+      <div class="nav-right">
+        <a href="#" class="btn-outline"><i class="fa fa-language"></i> Language</a>
+        <a href="#" class="btn-primaryLog"><i class="fa fa-user-circle-o"></i> Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Footer -->
+   <!-- Footer -->
+  <footer class="footer">
+  <div class="container">
+    <!-- Left: Logo + About -->
+    <div class="footer-col about">
+      <h3><img src="img/icon.jpg" alt="IRCTC Logo" class="logo"> IRCTC</h3>
+      <p>
+        Indian Railway Catering & Tourism Corporation<br>
+        A "Navratna" Central Public Sector Enterprise under the Ministry of Railways, Government of India,
+        dedicated to enhancing railway travel experience since 1999.
+      </p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- Middle Left: Quick Links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">News & Updates</a></li>
+        <li><a href="#">Investor Relations</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Middle Right: Services -->
+    <div class="footer-col">
+      <h4>Our Services</h4>
+      <ul>
+        <li><a href="#">Rail Ticket Booking</a></li>
+        <li><a href="#">Food on Track</a></li>
+        <li><a href="#">Tourism Packages</a></li>
+        <li><a href="#">Rail Neer</a></li>
+        <li><a href="#">Catering Services</a></li>
+        <li><a href="#">E-Catering</a></li>
+      </ul>
+    </div>
+
+    <!-- Right: Contact -->
+    <div class="footer-col">
+      <h4>Contact & Investors</h4>
+      <p><i class="fas fa-map-marker-alt" style="color: #ff8c00;"></i> IRCTC Corporate Office, New Delhi, India</p>
+      <p><i class="fas fa-phone-alt" style="color: #ff8c00;"></i> 1800-1034-139</p>
+      <p><i class="fas fa-envelope" style="color: #ff8c00;"></i> care@irctc.co.in</p>
+      <h5>Investor Relations</h5>
+      <ul>
+        <li><a href="#">Annual Reports</a></li>
+        <li><a href="#">Financial Results</a></li>
+        <li><a href="#">Board Meetings</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>© 2024 Indian Railway Catering and Tourism Corporation Ltd. All rights reserved.</p>
+    <p>A Government of India Enterprise | Ministry of Railways</p>
+    <div class="bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Sitemap</a>
+    </div>
+    <p class="listed">Listed on BSE & NSE | BSE Code: 542830 | NSE Symbol: IRCTC</p>
+  </div>
+</footer>
+
+
+</body>
+</html>
