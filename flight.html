@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Flight Booking</title>
+
+    <style>
+
+      /*Header*/
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Trirong", serif;
+      line-height: 1.6;
+      color: #222;
+      background: #fff;
+      padding-top: 90px;
+    }
+
+    header {
+      background-color: aliceblue;
+      border-bottom: 1px solid #eee;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+    .nav-container {
+      max-width: 100%;
+      margin: auto;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-left img {
+      height: 70px;
+      box-shadow: 0px 0px 4px 0px #999999;
+      border-radius: 100px;
+    }
+    .navbar ul {
+      display: flex;
+      gap: 50px;
+      list-style: none;
+    }
+    .navbar ul li a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 14px;
+      color: #333;
+      padding: 15px 15px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    .navbar ul li a i {
+      font-size: 20px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .navbar ul li a:hover,
+    .navbar ul li.active a {
+      background: linear-gradient(to right, #c3ddff, #ffe1bc);
+      color: #004aad;
+    }
+    .navbar ul li a:hover i,
+    .navbar ul li.active a i {
+      color: #004aad;
+    }
+    .nav-right a {
+      padding: 8px 16px;
+      margin-left: 10px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .btn-outline {
+      border: 2px solid #ff8c00;
+      color: #ff8c00;
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: #ff8c00; color: #fff;
+    }
+    .btn-primaryLog {
+      background: #ff8c00; color: #fff;
+      padding: 8px 16px;
+    margin-left: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    }
+    .btn-primaryLog:hover {
+      background: #e67600;
+    }
+
+    @media (max-width: 768px) {
+      .navbar{
+        display: none;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      background: #2b2f38;
+      color: #ddd;
+      padding: 50px 20px 20px;
+    }
+    .footer .container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+    .logo {
+      width: 28px;
+      height: auto;
+      border-radius: 30px;
+    }
+    .footer h3, .footer h4, .footer h5 {color: #fff;}
+    .footer-col ul {list-style: none; padding: 0;}
+    .footer-col ul li {margin-bottom: 8px;}
+    .footer-col ul li a {text-decoration: none; color: #bbb; font-size: 14px;}
+    .footer-col ul li a:hover {color: #fff;}
+    .social-icons {display: flex; gap: 12px; margin-top: 15px;}
+    .social-icons a {color: #fff; font-size: 18px; transition: 0.3s;}
+    .social-icons a:hover {color: #ff6600;}
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
+      color: #aaa;
+      border-top: 1px solid #444;
+      padding-top: 20px;
+    }
+    .footer-bottom .bottom-links a {
+      margin: 0 10px;
+      color: #bbb;
+      font-size: 13px;
+    }
+    .footer-bottom .bottom-links a:hover {color: #fff;}
+
+
+    /* Mobile menu toggle button */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* Mobile view */
+    @media (max-width: 768px) {
+
+      .navbar {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: aliceblue;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+      .navbar ul {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .navbar ul li {
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      /* Show menu when active */
+      .navbar.active {
+        display: flex;
+      }
+    }
+
+
+
+    
+    /* Hero view */
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px 40px;
+       background-image: url('img/plane-bg1.jpg');  
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      
+    }
+
+    .hero h1 span {
+      color: #004aad;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+      font-weight: bold;
+      text-shadow: 
+      -1px -1px 0 rgba(255,255,255,0.6),
+       1px -1px 0 rgba(255,255,255,0.6),
+      -1px  1px 0 rgba(255,255,255,0.6),
+       1px  1px 0 rgba(255,255,255,0.6);
+      color: #000000;
+    }
+
+    /* Booking Form */
+    .booking-box {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgb(44 44 44);
+      border-radius: 15px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .trip-options {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .trip-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: #444;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .trip-btn.active {
+      background: #ff4ecf;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+    }
+
+
+    .trip-options button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: transparent;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .trip-options button.active {
+      background: linear-gradient(to right, #c3ddff, #ffe1bc);
+      color: #000;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .form-grid input,
+    .form-grid select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    .form-grid input::placeholder {
+      color: #ddd;
+    }
+
+    .search-btn {
+      grid-column: span 2;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(to right, #c3ddff, #ffe1bc);
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .search-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* Stats Section */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+      min-width: 120px;
+    }
+
+    .stat h3 {
+      font-size: 24px;
+      margin: 10px 0 5px;
+      color: #004aad;
+    }
+
+    .stat p {
+      font-size: 14px;
+      color: #000;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .search-btn {
+        grid-column: span 1;
+      }
+    }
+
+
+    .container1 {
+      padding: 30px 20px;
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 28px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .card-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 2px 3px rgb(0 0 0 / 50%);
+      justify-content: space-around;
+      border: 1px solid #dedede !important;
+    }
+
+    /* Card base styles */
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 110px;
+      flex: 1 1 110px;
+      color: #333;
+      cursor: pointer;
+      padding: 10px;
+      text-decoration: none;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      transition: background 0.2s;
+    }
+
+    .card:hover {
+      background: #f0f0f0;
+    }
+
+    .card img {
+      width: 30px;
+      margin-bottom: 8px;
+    }
+
+    .card span {
+      font-size: 0.9rem;
+    }
+
+    .Vline{
+      background: none !important;
+      box-shadow: none !important;
+      border-right: 1px solid #6f6f6f !important;
+      border-radius: 0px !important; 
+    }
+    .v1{
+      background: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Remove left border logic (optional) */
+    .card:not(:first-child) {
+      border-left: none;
+    }
+
+    /* Tablet and smaller screens */
+    @media (max-width: 768px) {
+      .card-box {
+        justify-content: center;
+      }
+
+      .card {
+        width: 100px;
+      }
+
+      .card span {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Mobile view: stack vertically with icon and text side-by-side */
+    @media (max-width: 480px) {
+      .card-box {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+      }
+
+      .card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        gap: 10px;
+        padding: 12px;
+      }
+
+      .expand img{
+        width: 60px !important;
+        margin-bottom: 0;
+        margin-left: -15px;
+      }
+
+      .card img {
+        width: 30px;
+        margin-bottom: 0;
+      }
+
+
+
+      .card span {
+        font-size: 0.85rem;
+        text-align: left;
+      }
+    }
+
+
+    .specials-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+    .specials-title {
+      font-weight: bold;
+      font-size: 28px;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #004aad;
+    }
+    .specials-desc {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 18px auto;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      color: #555;
+    }
+    .readmore {
+      color: #216bcb;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    .specials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      margin-top: 24px;
+    }
+    .special-card {
+      background: #fff;
+      border-radius: 7px;
+      box-shadow: 0 2px 3px rgb(0 0 0 / 50%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s;
+    }
+    .special-card:hover {
+      box-shadow: 0 8px 24px rgba(32,60,140,0.1);
+    }
+    .card-img {
+      width: 100%;
+      height: 136px;
+      object-fit: cover;
+    }
+    .card-body {
+      padding: 18px 15px 10px 15px;
+    }
+    .card-title {
+      font-size: 1.17rem;
+      font-weight: 500;
+      margin: 0 0 2px 0;
+      color: #222;
+    }
+    .card-category {
+      font-size: 0.96rem;
+      color: #78819c;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .card-price-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+    .card-price {
+      font-size: 1.32rem;
+      color: #216bcb;
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
+    .card-starting {
+      color: #969dac;
+      font-size: 0.97rem;
+      font-weight: 400;
+    }
+    @media (max-width: 700px) {
+      .specials-title {
+        font-size: 1.2rem;
+      }
+      .card-img {
+        height: 100px;
+      }
+      .specials-grid {
+        gap: 18px;
+      }
+    }
+    @media (max-width: 520px) {
+      .specials-grid {
+        grid-template-columns: 1fr;
+      }
+      .card-img {
+        height: 80px;
+      }
+    }
+
+
+    .banner-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 30px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(20,40,60,0.11);
+      margin-bottom: 70px;
+    }
+    .banner-img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      height: 200px;
+    }
+    .banner-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 56%;
+      padding: 28px 24px 0 24px; /* space from top and left */
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; /* align to left */
+      background: linear-gradient(to right, rgb(85 198 229) 90%, #ffffff00 100%);
+    }
+    .banner-text h2 {
+      color: #000;
+      font-size: 2.3rem;
+      font-weight: bold;
+      line-height: 1.1;
+      margin-bottom: 15px;
+      margin-top: 0;
+    }
+    .banner-code {
+      color: #000;
+      font-weight: 500;
+      background: #fff;
+      border-radius: 12px;
+      display: inline-block;
+      padding: 9px 22px;
+      letter-spacing: 1px;
+      margin-bottom: 75px;
+    }
+    @media (max-width: 800px) {
+      .banner-text {
+        width: 72%;
+        padding: 12px 8vw 0 8vw;
+      }
+      .banner-text h2 {
+        font-size: 1.2rem;
+      }
+      .banner-code {
+        font-size: 1rem;
+        padding: 6px 11px;
+      }
+      .banner-img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        height: 100px;
+      }
+    }
+    @media (max-width: 500px) {
+      .banner-wrap {
+        border-radius: 7px;
+      }
+      .banner-text h2 {
+        font-size: 1rem;
+      }
+      .banner-code {
+        font-size: 0.85rem;
+        padding: 4px 6px;
+      }
+      .banner-img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        height: 100px;
+      }
+    }
+
+
+    .hero-section {
+      text-align: center;
+    }
+    .cardy {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 2px 3px rgb(0 0 0 / 50%);
+      transition: transform 0.2s;
+    }
+
+    .cardy:hover {
+      transform: translateY(-5px);
+    }
+
+    h1 span {
+      color: #6c63ff;
+    }
+
+    p.subtitle {
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .tag {
+      background-color: #e0e7ff;
+      color: #5a67d8;
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 columns */
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0px 20px;
+      margin-bottom: 20px;
+    }
+
+    .card-header {
+      padding: 40px 0;
+      color: white;
+      font-size: 2.5rem;
+      position: relative;
+      text-align: center;
+    }
+
+    .discount {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .card-footer {
+      padding: 20px;
+      text-align: left;
+    }
+
+    .destination {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .country {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-size: 1.3rem;
+      color: #6c63ff;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .card-footer button {
+      background: linear-gradient(to right, #6c63ff, #5a55ea);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    /* Background gradients per card */
+    .tokyo { background: linear-gradient(135deg, #cc2b5e, #753a88); }
+    .paris { background: linear-gradient(135deg, #4568dc, #b06ab3); }
+    .dubai { background: linear-gradient(135deg, #ee9ca7, #ffdde1); }
+    .sydney { background: linear-gradient(135deg, #2193b0, #6dd5ed); }
+    .newyork { background: linear-gradient(135deg, #7f00ff, #e100ff); }
+    .london { background: linear-gradient(135deg, #3a6073, #16222a); }
+
+
+    .section-bg {
+      background: url('img/experience1.jpg') no-repeat center center/cover;
+      position: relative;
+      width: 100%;
+      overflow-x: hidden;
+      padding-bottom: 50px;
+      margin-top: 50px;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.7);
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 24px !important;
+      text-align: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      background: #ffd6fc;
+      color: #e84ccb;
+      padding: 7px 28px;
+      border-radius: 18px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin-top: 55px;
+      margin-bottom: 22px;
+      box-shadow: 0 2px 12px rgba(220,60,170,0.07);
+      gap: 8px;
+    }
+    .badge-icon {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+    }
+    .heading {
+      color: #004aad;
+    }
+    .heading .highlight {
+      color: #6c63ff;
+    }
+    .features-grid {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 32px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      width: 98%;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 2px 3px rgb(0 0 0 / 50%);
+      flex: 1 1 245px;
+      max-width: 325px;
+      min-width: 220px;
+      padding: 42px 24px 32px 24px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.16s;
+      position: relative;
+    }
+    .feature-card:hover {
+      box-shadow: 0 2px 3px rgb(0 0 0 / 100%);
+    }
+    .icon-bg {
+      width: 76px;
+      height: 76px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .icon-shield { background: linear-gradient(135deg, #596bfa 10%, #935bff 95%);}
+    .icon-bolt { background: linear-gradient(135deg, #fc67ff 8%, #a96bff 92%);}
+    .icon-globe { background: linear-gradient(135deg, #2cd185 0%, #169d52 100%);}
+    .icon-heart { background: linear-gradient(135deg, #fd816c 9%, #eb1957 95%);}
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 10px;
+    }
+    .feature-desc {
+      font-size: 1.07rem;
+      color: #8081b3;
+      line-height: 1.54;
+    }
+    @media (max-width: 1040px) {
+      .features-grid {
+        gap: 18px;
+      }
+      .heading { font-size: 2.15rem;}
+      .feature-card {
+        max-width: 99vw;
+        min-width: 180px;
+      }
+    }
+    @media (max-width: 770px) {
+      .features-grid {
+        gap: 8px;
+        margin-top: 30px;
+      }
+      .heading { font-size: 1.33rem;}
+      .feature-title { font-size: 1.04rem;}
+      .feature-card { padding: 24px 7px 18px 7px;}
+    }
+    @media (max-width: 590px) {
+      .features-grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .feature-card {
+        max-width: 96vw;
+        min-width: 0;
+        padding: 13vw 4vw 7vw 4vw;
+      }
+    }
+
+
+
+    /* ------- Top Section ------- */
+    .stories-section {
+      padding: 48px 0 40px 0;
+      background: #fff;
+      text-align: center;
+    }
+    .customer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #e3fbec;
+      color: #12ba70;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 16px;
+      padding: 6px 20px;
+      margin-bottom: 22px;
+      box-shadow: 0 2px 8px rgba(30,180,120,0.07);
+    }
+    .customer-badge svg {
+      width: 18px;
+      height: 18px;
+    }
+    .stories-title {
+      font-size: 2.8rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+      margin-top: 0;
+      color: #18171b;
+    }
+    .stories-title .highlight {
+      color: #2e2bb5;
+      font-weight: 700;
+      display: block;
+    }
+    /* ------- Testimonials ------- */
+    .testimonials-row {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      margin-top: 48px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 3px rgb(0 0 0 / 50%);
+      padding: 28px 27px 18px 27px;
+      width: 340px;
+      max-width: 90vw;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+      transition: box-shadow 0.18s;
+    }
+    .testimonial-card:hover {
+      box-shadow: 0 8px 28px rgba(34,30,120,0.11);
+    }
+    .stars {
+      color: #ffc44d;
+      font-size: 1.25rem;
+      margin-bottom: 9px;
+    }
+    .testimonial-text {
+      color: #444;
+      font-size: 1.09rem;
+      font-style: italic;
+      min-height: 48px;
+      margin-bottom: 18px;
+      opacity: .87;
+    }
+    .user-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    .user-details {
+      font-size: 1.01rem;
+      line-height: 1.17;
+    }
+    .user-name {
+      font-weight: bold;
+      color: #1e215a;
+    }
+    .user-role {
+      color: #6880b9;
+      font-size: 0.97rem;
+      font-weight: 500;
+      display: block;
+    }
+    /* ------- CTA Section ------- */
+    .cta-section {
+      background: linear-gradient(107deg, #3b2eeb 0%, #e12be8 85%);
+      color: #fff;
+      margin-top: 82px;
+      padding: 78px 0 72px 0;
+      position: relative;
+      text-align: center;
+    }
+    .cta-arrow {
+      margin-bottom: 21px;
+      display: inline-block;
+    }
+    .cta-arrow svg {
+      width: 38px;
+      height: 38px;
+      color: #fff;
+      opacity: 0.89;
+    }
+    .cta-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+    .cta-sub {
+      color: #e8defc;
+      margin-bottom: 36px;
+      font-size: 1.18rem;
+      max-width: 510px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 500;
+    }
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 12px;
+    }
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 34px;
+      height: 54px;
+      font-size: 1.14rem;
+      font-weight: 600;
+      border-radius: 14px;
+      border: 2px solid #fff;
+      background: #ff57ee;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 3px 12px rgba(57,25,110,0.10);
+      transition: background 0.16s, color 0.16s;
+    }
+    .cta-btn.secondary {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+    }
+    .cta-btn:hover:not(.secondary) {
+      background: #ce30e7;
+    }
+    .cta-btn.secondary:hover {
+      background: #fff;
+      color: #ac2cd9;
+    }
+    .cta-btn svg {
+      width: 24px;
+      height: 24px;
+      color: inherit;
+    }
+    /* ------- Responsive ------- */
+    @media (max-width: 1024px) {
+      .stories-title { font-size: 2rem; }
+      .testimonials-row { gap: 18px; }
+      .cta-title { font-size: 1.55rem; }
+    }
+    @media (max-width: 600px) {
+      .stories-title { font-size: 1.15rem;}
+      .stories-title .highlight { font-size: 1.0rem;}
+      .customer-badge { font-size: 0.89rem; padding: 4px 11px;}
+      .cta-section { padding: 42px 0 38px 0;}
+      .cta-title { font-size: 1.06rem;}
+      .cta-btn { height: 44px; font-size: 0.98rem; padding: 0 16px;}
+      .testimonials-row { flex-direction: column; align-items: center;}
+      .testimonial-card { width: 96vw; }
+    }
+
+    </style>
+</head>
+<body>
+
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="index.html"><img src="img/logo1.png" alt="Logo"></a>
+      </div>
+      
+      <nav class="navbar">
+        <ul>
+          <li><a href="train.html"><i class="fas fa-train"></i><span>Trains</span></a></li>
+          <li><a href="bus.html"><i class="fas fa-bus"></i><span>Bus</span></a></li>
+          <li class="active"><a href="flight.html"><i class="fas fa-plane"></i><span>Flights</span></a></li>
+          <li><a href="hotels.html"><i class="fas fa-hotel"></i><span>Hotels</span></a></li>
+          <li><a href="holiday.html"><i class="fas fa-umbrella-beach"></i><span>Holidays</span></a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-right">
+        <a href="#" class="btn-outline"><i class="fa fa-language"></i> Language</a>
+        <a href="#" class="btn-primaryLog"><i class="fa fa-user-circle-o"></i> Login</a>
+      </div>
+
+      <!-- Mobile menu toggle -->
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+
+  <section class="hero">
+    <h1>Fly Beyond <span>Imagination</span></h1>
+    <p>Discover extraordinary destinations with unbeatable prices, seamless booking, and exceptional service that transforms every journey into an adventure.</p>
+
+    <div class="booking-box">
+      <div class="trip-options">
+        <button class="trip-btn active" data-trip="round">Round Trip</button>
+        <button class="trip-btn" data-trip="oneway">One Way</button>
+      </div>
+
+      <div class="form-grid">
+          <input type="text" placeholder="From">
+          <input type="text" placeholder="To">
+          <input type="text" placeholder="Departure Date" 
+                 onfocus="(this.type='date')" 
+                 onblur="if(!this.value) this.type='text'">
+
+          <input type="text" class="return-date" placeholder="Return Date" 
+                 onfocus="(this.type='date')" 
+                 onblur="if(!this.value) this.type='text'">
+
+          <select>
+            <option>1 Adult</option>
+            <option>2 Adults</option>
+            <option>3 Adults</option>
+          </select>
+          <select>
+            <option>Economy</option>
+            <option>Business</option>
+            <option>First Class</option>
+          </select>
+          <button class="search-btn">Search Flights</button>
+        </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <h3>10M+</h3>
+        <p>Happy Travelers</p>
+      </div>
+      <div class="stat">
+        <h3>500+</h3>
+        <p>Airlines</p>
+      </div>
+      <div class="stat">
+        <h3>190+</h3>
+        <p>Countries</p>
+      </div>
+      <div class="stat">
+        <h3>24/7</h3>
+        <p>Support</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container1">
+    <div class="title" style="color: #004aad;">Explore <span style="color: #0073e6;">More With IRCTC</span></div>
+
+    <div class="card-box">
+      <a href="#seat-availability" class="card Vline">
+        <img src="img/tracker.png" alt="Train Seat Availability">
+        <span>Flight Tracker</span>
+      </a>
+
+      <a href="#train-search" class="card Vline">
+        <img src="img/insurance.png" alt="Search By Name/Number">
+        <span>Travel Insurance</span>
+      </a>
+
+      <a href="#tatkal-reservation" class="card Vline">
+        <img src="img/groupB.png" alt="Tatkal Railway Reservation">
+        <span>Group Booking</span>
+      </a>
+
+      <a href="#order-food" class="card Vline expand">
+        <img src="img/cab.png" alt="Order Food On Train" style="width: 70px;">
+        <span>Airport Cabs</span>
+      </a>
+
+      <a href="#order-food" class="card v1">
+        <img src="img/alert.png" alt="Order Food On Train">
+        <span>Fare Alerts</span>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="specials-container">
+    <h2 class="specials-title">IRCTC <span style="color: #0073e6;">Specials Offers</span></h2>
+    <div class="specials-desc">
+      Watch the beauty of India and the World through a different lens! Begin your next adventure now only with IRCTC Special Tour Packages. 
+    </div>
+    <div class="specials-grid">
+      <!-- Card 1 -->
+      <div class="special-card">
+        <img src="img/ladakh.jpg" class="card-img" alt="India Long Weekend">
+        <div class="card-body">
+          <div class="card-category">Long Weekend</div>
+          <div class="card-price-row">
+            <span class="card-price">₹11 000.00</span>
+            <span class="card-starting"><a href="#" class="btn-primaryLog">Book</a></span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="special-card">
+        <img src="img/kashmir.jpg" class="card-img" alt="Wild Escapes">
+        <div class="card-body">
+          <div class="card-category">Escapes</div>
+          <div class="card-price-row">
+            <span class="card-price">₹37 900.00</span>
+            <span class="card-starting"><a href="#" class="btn-primaryLog">Book</a></span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="special-card">
+        <img src="img/goa.jpg" class="card-img" alt="Spiritual Tour Packages">
+        <div class="card-body">
+          <div class="card-category">Tour Packages</div>
+          <div class="card-price-row">
+            <span class="card-price">₹40 000.00</span>
+            <span class="card-starting"><a href="#" class="btn-primaryLog">Book</a></span>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="special-card">
+        <img src="img/inter.png" class="card-img" alt="International Tour Packages">
+        <div class="card-body">
+          <div class="card-title">International</div>
+          <div class="card-price-row">
+            <span class="card-price">₹60 000.00</span>
+            <span class="card-starting"><a href="#" class="btn-primaryLog">Book</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="banner-wrap">
+    <img src="img/tourBanner.jpg" class="banner-img" alt="Flight Big Billion Day Banner">
+    <div class="banner-text">
+      <h2>Up to 35% off on flights</h2>
+      <div class="banner-code"><a href="#" style="text-decoration: none;"> Use code: BBDCC </a></div>
+    </div>
+  </div>
+
+
+  <div class="hero-section">
+    <h1 style="color: #004aad;">Where <span>Will You Go Next?</span></h1>
+    <p class="subtitle">Explore the world's most incredible destinations with exclusive deals and packages</p>
+  </div>
+
+  <div class="grid">
+    <!-- Tokyo -->
+    <div class="cardy">
+      <div class="card-header tokyo">
+        🗾
+        <div class="discount">40% OFF</div>
+      </div>
+      <div class="card-footer">
+        <div class="destination">Tokyo</div>
+        <div class="country">Japan</div>
+        <div class="price">From $599</div>
+        <button>Book Now →</button>
+      </div>
+    </div>
+
+    <!-- Paris -->
+    <div class="cardy">
+      <div class="card-header paris">
+        🗼
+        <div class="discount">35% OFF</div>
+      </div>
+      <div class="card-footer">
+        <div class="destination">Paris</div>
+        <div class="country">France</div>
+        <div class="price">From $449</div>
+        <button>Book Now →</button>
+      </div>
+    </div>
+
+    <!-- Dubai -->
+    <div class="cardy">
+      <div class="card-header dubai">
+        🏙️
+        <div class="discount">45% OFF</div>
+      </div>
+      <div class="card-footer">
+        <div class="destination">Dubai</div>
+        <div class="country">UAE</div>
+        <div class="price">From $399</div>
+        <button>Book Now →</button>
+      </div>
+    </div>
+
+    <!-- Sydney -->
+    <div class="cardy">
+      <div class="card-header sydney">
+        🦘
+        <div class="discount">30% OFF</div>
+      </div>
+      <div class="card-footer">
+        <div class="destination">Sydney</div>
+        <div class="country">Australia</div>
+        <div class="price">From $699</div>
+        <button>Book Now →</button>
+      </div>
+    </div>
+
+    <!-- New York -->
+    <div class="cardy">
+      <div class="card-header newyork">
+        🗽
+        <div class="discount">50% OFF</div>
+      </div>
+      <div class="card-footer">
+        <div class="destination">New York</div>
+        <div class="country">USA</div>
+        <div class="price">From $349</div>
+        <button>Book Now →</button>
+      </div>
+    </div>
+
+    <!-- London -->
+    <div class="cardy">
+      <div class="card-header london">
+        🏰
+        <div class="discount">42% OFF</div>
+      </div>
+      <div class="card-footer">
+        <div class="destination">London</div>
+        <div class="country">UK</div>
+        <div class="price">From $389</div>
+        <button>Book Now →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-bg">
+    <div class="overlay"></div>
+    <div class="content">
+
+      <h1 class="heading">Experience <span class="highlight">The Difference</span></h1>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="icon-bg icon-shield">
+            <!-- Shield SVG -->
+            <svg width="36" height="36" fill="none" viewBox="0 0 36 36"><path d="M18 5l12 5v8c0 7-5.349 13-12 15-6.651-2-12-8-12-15V10l12-5z" stroke="#fff" stroke-width="2" fill="none"/><path d="M18 23c2.761 0 5-2.239 5-5V14a1 1 0 00-1-1h-8a1 1 0 00-1 1v4c0 2.761 2.239 5 5 5z" fill="#fff"/></svg>
+          </div>
+          <div class="feature-title">Secure & Trusted</div>
+          <div class="feature-desc">Bank-level security with SSL encryption for all transactions</div>
+        </div>
+        <div class="feature-card">
+          <div class="icon-bg icon-bolt">
+            <!-- Bolt SVG -->
+            <svg width="36" height="36" fill="none" viewBox="0 0 36 36"><path d="M15 32l8.5-12H19l2-12L11 20h5l-1 12z" stroke="#fff" stroke-width="2" fill="none"/></svg>
+          </div>
+          <div class="feature-title">Lightning Fast</div>
+          <div class="feature-desc">Find and book flights in under 60 seconds</div>
+        </div>
+        <div class="feature-card">
+          <div class="icon-bg icon-globe">
+            <!-- Globe SVG -->
+            <svg width="36" height="36" fill="none" viewBox="0 0 36 36"><circle cx="18" cy="18" r="14" stroke="#fff" stroke-width="2" fill="none"/><ellipse cx="18" cy="18" rx="7" ry="14" stroke="#fff" stroke-width="2"/><line x1="4" y1="18" x2="32" y2="18" stroke="#fff" stroke-width="2"/></svg>
+          </div>
+          <div class="feature-title">Global Coverage</div>
+          <div class="feature-desc">Access to 500+ airlines across 190+ countries</div>
+        </div>
+        <div class="feature-card">
+          <div class="icon-bg icon-heart">
+            <!-- Heart SVG -->
+            <svg width="36" height="36" fill="none" viewBox="0 0 36 36"><path d="M18 30s-10-6.857-10-13.286C8 10.13 12.477 7 18 7s10 3.13 10 9.714C28 23.143 18 30 18 30z" stroke="#fff" stroke-width="2" fill="none"/><path d="M18 23.485l-4.95-4.95a3.5 3.5 0 014.95-4.95 3.5 3.5 0 014.95 4.95L18 23.485z" fill="#fff"/></svg>
+          </div>
+          <div class="feature-title">Best Price Promise</div>
+          <div class="feature-desc">We'll match any lower price + give you 5% cashback</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stories-section">
+    <span class="customer-badge">
+      <svg fill="none" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#68efab"/><path d="M10 5.5l2.3 4.66 5.15.75-3.73 3.64.88 5.14L10 15.26 6.39 19l.89-5.15-3.73-3.63 5.15-.75L10 5.5z" fill="#fff"/></svg>
+      Customer Stories
+    </span>
+    <h2 class="stories-title">
+      Loved By Millions <span class="highlight">Worldwide</span>
+    </h2>
+    <div class="testimonials-row">
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">
+          "Absolutely incredible! Found my dream vacation flights at prices I couldn't believe. The interface is so intuitive and beautiful."
+        </div>
+        <div class="user-row">
+          <div class="user-avatar">
+            <svg width="29" height="29" viewBox="0 0 29 29" fill="none"><circle cx="14.5" cy="14.5" r="14.5" fill="#ffe6b3"/><ellipse cx="14.5" cy="11.5" rx="4.5" ry="5.2" fill="#7960fa"/><ellipse cx="14.5" cy="22" rx="6" ry="3" fill="#fe82bb"/></svg>
+          </div>
+          <div class="user-details">
+            <span class="user-name">Sarah Kapoor</span>
+            <span class="user-role">Travel Blogger</span>
+          </div>
+        </div>
+      </div>
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">
+          "I travel monthly for work and this platform has become my go-to. Lightning fast booking and excellent customer service."
+        </div>
+        <div class="user-row">
+          <div class="user-avatar">
+            <svg width="29" height="29" viewBox="0 0 29 29" fill="none"><circle cx="14.5" cy="14.5" r="14.5" fill="#c5f6fc"/><ellipse cx="14.5" cy="11.5" rx="4.5" ry="5.2" fill="#29359b"/><ellipse cx="14.5" cy="22" rx="6" ry="3" fill="#fcbb59"/></svg>
+          </div>
+          <div class="user-details">
+            <span class="user-name">Marcus Johnson</span>
+            <span class="user-role">Business Executive</span>
+          </div>
+        </div>
+      </div>
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">
+          "Perfect for my nomadic lifestyle! The multi-city booking feature saved me hours of planning. Highly recommend!"
+        </div>
+        <div class="user-row">
+          <div class="user-avatar">
+            <svg width="29" height="29" viewBox="0 0 29 29" fill="none"><circle cx="14.5" cy="14.5" r="14.5" fill="#ffe3f5"/><ellipse cx="14.5" cy="11.5" rx="4.5" ry="5.2" fill="#a81e9a"/><ellipse cx="14.5" cy="22" rx="6" ry="3" fill="#8642ea"/></svg>
+          </div>
+          <div class="user-details">
+            <span class="user-name">Elena Rodriguez</span>
+            <span class="user-role">Digital Nomad</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Call To Action Section -->
+  <div class="cta-section">
+    <div class="cta-title">Ready to Explore the World?</div>
+    <div class="cta-sub">Join over 10 million travelers who have discovered amazing destinations with SkyWings. Your next adventure is just one click away.</div>
+    <div class="cta-buttons">
+      <button class="cta-btn">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 12l9-6v9l9-6v9a2 2 0 01-2 2H5a2 2 0 01-2-2v-8z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 
+        Find Your Flight
+      </button>
+      <button class="cta-btn secondary">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4m16-7a4 4 0 10-8 3.999V20m4-8h.01" stroke="#ac50dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Speak to Expert
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-col about">
+        <h3><img src="img/icon.jpg" alt="IRCTC Logo" class="logo"> IRCTC</h3>
+        <p>
+          Indian Railway Catering & Tourism Corporation<br>
+          A "Navratna" Central Public Sector Enterprise under the Ministry of Railways, Government of India,
+          dedicated to enhancing railway travel experience since 1999.
+        </p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">News & Updates</a></li>
+          <li><a href="#">Investor Relations</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#">Rail Ticket Booking</a></li>
+          <li><a href="#">Food on Track</a></li>
+          <li><a href="#">Tourism Packages</a></li>
+          <li><a href="#">Rail Neer</a></li>
+          <li><a href="#">Catering Services</a></li>
+          <li><a href="#">E-Catering</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact & Investors</h4>
+        <p><i class="fas fa-map-marker-alt" style="color: #ff8c00;"></i> IRCTC Corporate Office, New Delhi, India</p>
+        <p><i class="fas fa-phone-alt" style="color: #ff8c00;"></i> 1800-1034-139</p>
+        <p><i class="fas fa-envelope" style="color: #ff8c00;"></i> care@irctc.co.in</p>
+        <h5>Investor Relations</h5>
+        <ul>
+          <li><a href="#">Annual Reports</a></li>
+          <li><a href="#">Financial Results</a></li>
+          <li><a href="#">Board Meetings</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Indian Railway Catering and Tourism Corporation Ltd. All rights reserved.</p>
+      <p>A Government of India Enterprise | Ministry of Railways</p>
+      <div class="bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+      <p class="listed">Listed on BSE & NSE | BSE Code: 542830 | NSE Symbol: IRCTC</p>
+    </div>
+  </footer>
+
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navbar = document.querySelector('.navbar');
+
+    menuToggle.addEventListener('click', () => {
+      navbar.classList.toggle('active');
+    });
+  </script>
+
+  <script>
+      const tabs = document.querySelectorAll(".tab");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      tabs.forEach(tab => {
+          tab.addEventListener("click", () => {
+              // remove active classes
+              tabs.forEach(t => t.classList.remove("active"));
+              tabContents.forEach(c => c.classList.remove("active"));
+
+              // add active to clicked
+              tab.classList.add("active");
+              document.getElementById(tab.dataset.tab).classList.add("active");
+          });
+      });
+
+  </script>
+
+  <script>
+    const tripButtons = document.querySelectorAll(".trip-btn");
+    const returnDate = document.querySelector(".return-date");
+
+    tripButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // remove active from all
+        tripButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        if (btn.dataset.trip === "oneway") {
+          returnDate.style.display = "none";
+        } else {
+          returnDate.style.display = "block";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

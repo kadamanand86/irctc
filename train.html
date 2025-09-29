@@ -8,7 +8,7 @@
   <title>Train Booking</title>
 
   <style>
-    * {
+  	* {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -309,7 +309,7 @@
 
     @media (max-width: 768px) {
       .navbar {
-        display: none;
+          display: none;
       }
     }
 
@@ -514,7 +514,7 @@
     }
 
     h2 span {
-      color: #0073e6;
+        color: #0073e6;
     }
 
     .hero-notice {
@@ -557,7 +557,7 @@
     .notice-btn:hover {
       background-color: #183257;
     }
-
+        
 
     .container1 {
       padding: 30px 20px;
@@ -669,7 +669,7 @@
       background: none !important;
       box-shadow: none !important;
       border-right: 1px solid #6f6f6f !important;
-      border-radius: 0px !important;
+      border-radius: 0px !important; 
     }
     .v1{
       background: none !important;
@@ -781,14 +781,14 @@
     .why-section {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 40px 20px;
       text-align: center;
     }
 
     .why-section h2 {
       font-size: 28px;
       font-weight: 700;
-      color: #0b2f6a;
+      color: #004aad;
       margin-bottom: 10px;
     }
 
@@ -819,8 +819,8 @@
     }
 
     .feature-card .icon {
-      width: 60px;
-      height: 60px;
+      width: 40px;
+      height: 40px;
       border-radius: 8px;
       display: flex;
       align-items: center;
@@ -875,385 +875,459 @@
       color: #555;
     }
 
+    /* Mobile menu toggle button */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* Mobile view */
+    @media (max-width: 768px) {
+
+      .navbar {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: aliceblue;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+      .navbar ul {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .navbar ul li {
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      /* Show menu when active */
+      .navbar.active {
+        display: flex;
+      }
+    }
 
   </style>
 
 </head>
 <body>
 
-<!-- Header -->
-<header>
-  <div class="nav-container">
-    <div class="nav-left">
-      <a href="index.html"><img src="img/logo1.png" alt="Logo"></a>
+ <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="index.html"><img src="img/logo1.png" alt="Logo"></a>
+      </div>
+      
+      <nav class="navbar">
+        <ul>
+          <li class="active"><a href="train.html"><i class="fas fa-train"></i><span>Trains</span></a></li>
+          <li><a href="bus.html"><i class="fas fa-bus"></i><span>Bus</span></a></li>
+          <li><a href="flight.html"><i class="fas fa-plane"></i><span>Flights</span></a></li>
+          <li><a href="hotels.html"><i class="fas fa-hotel"></i><span>Hotels</span></a></li>
+          <li><a href="holiday.html"><i class="fas fa-umbrella-beach"></i><span>Holidays</span></a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-right">
+        <a href="#" class="btn-outline"><i class="fa fa-language"></i> Language</a>
+        <a href="#" class="btn-primaryLog"><i class="fa fa-user-circle-o"></i> Login</a>
+      </div>
+
+      <!-- Mobile menu toggle -->
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
     </div>
-    <nav class="navbar">
-      <ul>
-        <li class="active"><a href="train.html"><i class="fas fa-train"></i><span>Trains</span></a></li>
-        <li><a href="bus.html"><i class="fas fa-bus"></i><span>Bus</span></a></li>
-        <li><a href="#"><i class="fas fa-plane"></i><span>Flights</span></a></li>
-        <li><a href="#"><i class="fas fa-hotel"></i><span>Hotels</span></a></li>
-        <li><a href="#"><i class="fas fa-umbrella-beach"></i><span>Holidays</span></a></li>
-      </ul>
-    </nav>
-    <div class="nav-right">
-      <a href="#" class="btn-outline"><i class="fa fa-language"></i> Language</a>
-      <a href="#" class="btn-primaryLog"><i class="fa fa-user-circle-o"></i> Login</a>
-    </div>
-  </div>
-</header>
+  </header>
 
 
-<div class="bgmix">
-  <div class="container hero-section">
-    <!-- LEFT SIDE -->
-    <div class="hero-text">
-      <h5>Welcome to the Future of Travel</h5>
-      <h1>IRCTC</h1>
-      <p style="color: #000;">Experience seamless train booking with India's most advanced platform.
+  <div class="bgmix">
+    <div class="container hero-section">
+      <!-- LEFT SIDE -->
+      <div class="hero-text">
+        <h5>Welcome to the Future of Travel</h5>
+        <h1>IRCTC</h1>
+        <p style="color: #000;">Experience seamless train booking with India's most advanced platform. 
         Fast, secure, and reliable – your journey starts here.</p>
 
-      <div class="badges">
-        <div class="badge"><i class="fas fa-bolt" style="color:#ffb800;"></i> Safety First</div>
-        <div class="badge"><i class="fas fa-shield-alt" style="color:#ff4d4d;"></i> 100% Secure</div>
+        <div class="badges">
+          <div class="badge"><i class="fas fa-bolt" style="color:#ffb800;"></i> Safety First</div>
+          <div class="badge"><i class="fas fa-shield-alt" style="color:#ff4d4d;"></i> 100% Secure</div>
+        </div>
+
+        <div class="hero-img">
+          <img src="img/vande.png" alt="Train Image">
+        </div>
+
+        <div class="hero-notice">
+          <h4 style="color: #000;">Festival Round Trip Scheme: <span style="color: blue;"><a href=""> User Guide and Terms & Conditions </a></span></h4>
+          <div class="notice-buttons">
+            <a href="https://www.irctc.co.in/pnr-status" target="_blank" class="notice-btn">PNR Status</a>
+            <a href="https://www.irctc.co.in/live-train-status" target="_blank" class="notice-btn">Live Train Status</a>
+          </div>
+        </div>
+
       </div>
 
-      <div class="hero-img">
-        <img src="img/vande.png" alt="Train Image">
+      <!-- RIGHT SIDE -->
+      <div class="ticket-card">
+        <h2><i class="fas fa-ticket-alt"></i> Book Ticket</h2>
+        <small>Quick & Easy Booking</small>
+
+        <form>
+          <div class="form-group">
+            <label><i class="fas fa-map-marker-alt" style="color:#004aad;"></i> From</label>
+            <input type="text" placeholder="Enter departure station">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-map-marker-alt" style="color:#004aad;"></i> To Station</label>
+            <input type="text" placeholder="Enter destination">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-calendar-alt" style="color:#004aad;"></i> Journey Date</label>
+            <input type="date">
+          </div>
+
+          <div class="form-group">
+            <label>Class</label>
+            <select>
+              <option>All Classes</option>
+              <option>AC First Class</option>
+              <option>AC 2 Tier</option>
+              <option>AC 3 Tier</option>
+              <option>Sleeper</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Quota</label>
+            <select>
+              <option>General</option>
+              <option>Tatkal</option>
+              <option>Ladies</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-submit"><i class="fas fa-train"></i> Search Trains</button>
+        </form>
+
+        <div class="note">
+          <p><span>⚡ Fast Booking</span> in under 2 minutes</p>
+          <p><span>🛡 100% Secure</span> payment gateway</p>
+        </div>
       </div>
 
-      <div class="hero-notice">
-        <h4 style="color: #000;">Festival Round Trip Scheme: <span style="color: blue;"><a href=""> User Guide and Terms & Conditions </a></span></h4>
-        <div class="notice-buttons">
-          <a href="https://www.irctc.co.in/pnr-status" target="_blank" class="notice-btn">PNR Status</a>
-          <a href="https://www.irctc.co.in/live-train-status" target="_blank" class="notice-btn">Live Train Status</a>
+    </div>
+  </div>
+
+  <div class="container1">
+    <div class="title" style="color: #004aad;">Explore <span style="color: #0073e6;">More With IRCTC</span></div>
+
+    <div class="card-box">
+      <a href="#seat-availability" class="card Vline">
+        <img src="img/seat.png" alt="Train Seat Availability" style="width: 22px;">
+        <span>Train Seat Availability</span>
+      </a>
+
+      <a href="#train-search" class="card Vline">
+        <img src="img/find.png" alt="Search By Name/Number">
+        <span>Train Search By Name/Number</span>
+      </a>
+
+      <a href="#tatkal-reservation" class="card Vline">
+        <img src="img/ticket.png" alt="Tatkal Railway Reservation" style="width: 40px;">
+        <span>Tatkal Railway Reservation</span>
+      </a>
+
+      <a href="#order-food" class="card v1">
+        <img src="https://img.icons8.com/color/48/restaurant.png" alt="Order Food On Train">
+        <span>E-Catering - Order Food On Train</span>
+      </a>
+
+    </div>
+  </div>
+
+  <section class="routes-section">
+    <h2 style="color:#004aad;">Popular <span>Routes</span></h2>
+    <p>Discover the most traveled routes across India with comfortable trains and great amenities</p>
+
+    <div class="row">
+
+      <div class="routes-grid">
+        <!-- Card 1 -->
+        <div class="route-card card1">
+          <h3><i class="fa-solid fa-location-dot"></i> New Delhi</h3>
+          <span class="rating"><i class="fa-solid fa-star"></i> 4.5</span>
+          <div class="details">to <i class="fa-solid fa-location-dot"></i> Mumbai Central</div>
+          <div class="details"><i class="fa-regular fa-clock"></i> 16h 35m &nbsp; | &nbsp; 12+ trains</div>
+          <div class="price">Starting from ₹1,200</div>
+          <button class="btn">Book Now</button>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="route-card card2">
+          <h3><i class="fa-solid fa-location-dot"></i> Bangalore</h3>
+          <span class="rating"><i class="fa-solid fa-star"></i> 4.3</span>
+          <div class="details">to <i class="fa-solid fa-location-dot"></i> Chennai Central</div>
+          <div class="details"><i class="fa-regular fa-clock"></i> 4h 45m &nbsp; | &nbsp; 8+ trains</div>
+          <div class="price">Starting from ₹450</div>
+          <button class="btn">Book Now</button>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="route-card card3">
+          <h3><i class="fa-solid fa-location-dot"></i> Kolkata</h3>
+          <span class="rating"><i class="fa-solid fa-star"></i> 4.4</span>
+          <div class="details">to <i class="fa-solid fa-location-dot"></i> New Delhi</div>
+          <div class="details"><i class="fa-regular fa-clock"></i> 17h 20m &nbsp; | &nbsp; 10+ trains</div>
+          <div class="price">Starting from ₹1,100</div>
+          <button class="btn">Book Now</button>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="route-card card4">
+          <h3><i class="fa-solid fa-location-dot"></i> Mumbai Central</h3>
+          <span class="rating"><i class="fa-solid fa-star"></i> 4.6</span>
+          <div class="details">to <i class="fa-solid fa-location-dot"></i> Goa</div>
+          <div class="details"><i class="fa-regular fa-clock"></i> 8h 15m &nbsp; | &nbsp; 6+ trains</div>
+          <div class="price">Starting from ₹650</div>
+          <button class="btn">Book Now</button>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="route-card card5">
+          <h3><i class="fa-solid fa-location-dot"></i> Hyderabad</h3>
+          <span class="rating"><i class="fa-solid fa-star"></i> 4.2</span>
+          <div class="details">to <i class="fa-solid fa-location-dot"></i> Bangalore</div>
+          <div class="details"><i class="fa-regular fa-clock"></i> 12h 30m &nbsp; | &nbsp; 5+ trains</div>
+          <div class="price">Starting from ₹800</div>
+          <button class="btn">Book Now</button>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="route-card card6">
+          <h3><i class="fa-solid fa-location-dot"></i> Chennai Central</h3>
+          <span class="rating"><i class="fa-solid fa-star"></i> 4.5</span>
+          <div class="details">to <i class="fa-solid fa-location-dot"></i> Coimbatore</div>
+          <div class="details"><i class="fa-regular fa-clock"></i> 6h 45m &nbsp; | &nbsp; 7+ trains</div>
+          <div class="price">Starting from ₹380</div>
+          <button class="btn">Book Now</button>
         </div>
       </div>
 
     </div>
 
-    <!-- RIGHT SIDE -->
-    <div class="ticket-card">
-      <h2><i class="fas fa-ticket-alt"></i> Book Ticket</h2>
-      <small>Quick & Easy Booking</small>
+  </section>
 
-      <form>
-        <div class="form-group">
-          <label><i class="fas fa-map-marker-alt" style="color:#004aad;"></i> From</label>
-          <input type="text" placeholder="Enter departure station">
+
+  <section class="how-it-works">
+    <h2>How It <span>Works</span></h2>
+    <p>Book your train tickets in just 4 simple steps and enjoy a seamless travel experience</p>
+
+    <div class="steps-container">
+      <!-- Step 1 -->
+      <div class="step-card">
+        <div class="step-icon blue"><i class="fas fa-search"></i></div>
+        <div class="step-number">1</div>
+        <h3>Search Trains</h3>
+        <p>Enter your travel details and search for available trains on your route</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card">
+        <div class="step-icon orange"><i class="fas fa-ticket-alt"></i></div>
+        <div class="step-number">2</div>
+        <h3>Select Your Journey</h3>
+        <p>Choose your preferred train, class, and seat preferences from available options</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card">
+        <div class="step-icon blue"><i class="fas fa-credit-card"></i></div>
+        <div class="step-number">3</div>
+        <h3>Secure Payment</h3>
+        <p>Complete your booking with our secure payment gateway and multiple payment options</p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card">
+        <div class="step-icon orange"><i class="fas fa-check-circle"></i></div>
+        <div class="step-number">4</div>
+        <h3>Get Your E-Ticket</h3>
+        <p>Receive your confirmed e-ticket instantly via email and SMS for hassle-free travel</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="why-section">
+      <h2>Why Choose <span>IRCTC ?</span></h2>
+      <p>Experience the most trusted and convenient way to book train tickets with unmatched service quality</p>
+
+      <div class="features">
+        <div class="feature-card">
+          <div class="icon">🔒</div>
+          <h3>100% Secure</h3>
+          <p>Your data and transactions are protected with bank-grade security</p>
         </div>
 
-        <div class="form-group">
-          <label><i class="fas fa-map-marker-alt" style="color:#004aad;"></i> To Station</label>
-          <input type="text" placeholder="Enter destination">
+        <div class="feature-card">
+          <div class="icon">⏰</div>
+          <h3>24/7 Booking</h3>
+          <p>Book tickets anytime, anywhere with our round-the-clock service</p>
         </div>
 
-        <div class="form-group">
-          <label><i class="fas fa-calendar-alt" style="color:#004aad;"></i> Journey Date</label>
-          <input type="date">
+        <div class="feature-card">
+          <div class="icon">💳</div>
+          <h3>Multiple Payments</h3>
+          <p>Pay via UPI, cards, net banking, or wallets - whatever suits you</p>
         </div>
 
-        <div class="form-group">
-          <label>Class</label>
-          <select>
-            <option>All Classes</option>
-            <option>AC First Class</option>
-            <option>AC 2 Tier</option>
-            <option>AC 3 Tier</option>
-            <option>Sleeper</option>
-          </select>
+        <div class="feature-card">
+          <div class="icon">👥</div>
+          <h3>10M+ Happy Customers</h3>
+          <p>Join millions of satisfied travelers who trust our platform</p>
         </div>
 
-        <div class="form-group">
-          <label>Quota</label>
-          <select>
-            <option>General</option>
-            <option>Tatkal</option>
-            <option>Ladies</option>
-          </select>
+        <div class="feature-card">
+          <div class="icon">🏷️</div>
+          <h3>Best Price Guarantee</h3>
+          <p>Get the best deals and competitive pricing on all routes</p>
         </div>
 
-        <button type="submit" class="btn-submit"><i class="fas fa-train"></i> Search Trains</button>
-      </form>
+        <div class="feature-card">
+          <div class="icon">🎧</div>
+          <h3>Expert Support</h3>
+          <p>Get assistance from our dedicated customer support team</p>
+        </div>
+      </div>
 
-      <div class="note">
-        <p><span>⚡ Fast Booking</span> in under 2 minutes</p>
-        <p><span>🛡 100% Secure</span> payment gateway</p>
+      <div class="stats">
+        <div class="stat">
+          <h3>50L+</h3>
+          <p>Tickets Booked</p>
+        </div>
+        <div class="stat">
+          <h3>99.9%</h3>
+          <p>Success Rate</p>
+        </div>
+        <div class="stat">
+          <h3>24/7</h3>
+          <p>Customer Support</p>
+        </div>
+      </div>
+  </section>
+
+
+   <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-col about">
+        <h3><img src="img/icon.jpg" alt="IRCTC Logo" class="logo"> IRCTC</h3>
+        <p>
+          Indian Railway Catering & Tourism Corporation<br>
+          A "Navratna" Central Public Sector Enterprise under the Ministry of Railways, Government of India,
+          dedicated to enhancing railway travel experience since 1999.
+        </p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">News & Updates</a></li>
+          <li><a href="#">Investor Relations</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#">Rail Ticket Booking</a></li>
+          <li><a href="#">Food on Track</a></li>
+          <li><a href="#">Tourism Packages</a></li>
+          <li><a href="#">Rail Neer</a></li>
+          <li><a href="#">Catering Services</a></li>
+          <li><a href="#">E-Catering</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact & Investors</h4>
+        <p><i class="fas fa-map-marker-alt" style="color: #ff8c00;"></i> IRCTC Corporate Office, New Delhi, India</p>
+        <p><i class="fas fa-phone-alt" style="color: #ff8c00;"></i> 1800-1034-139</p>
+        <p><i class="fas fa-envelope" style="color: #ff8c00;"></i> care@irctc.co.in</p>
+        <h5>Investor Relations</h5>
+        <ul>
+          <li><a href="#">Annual Reports</a></li>
+          <li><a href="#">Financial Results</a></li>
+          <li><a href="#">Board Meetings</a></li>
+        </ul>
       </div>
     </div>
 
-  </div>
-</div>
-
-<div class="container1">
-  <div class="title" style="color: #004aad;">Explore <span style="color: #0073e6;">More With IRCTC</span></div>
-
-  <div class="card-box">
-    <a href="#seat-availability" class="card Vline">
-      <img src="img/seat.png" alt="Train Seat Availability" style="width: 22px;">
-      <span>Train Seat Availability</span>
-    </a>
-
-    <a href="#train-search" class="card Vline">
-      <img src="img/find.png" alt="Search By Name/Number">
-      <span>Train Search By Name/Number</span>
-    </a>
-
-    <a href="#tatkal-reservation" class="card Vline">
-      <img src="img/ticket.png" alt="Tatkal Railway Reservation" style="width: 40px;">
-      <span>Tatkal Railway Reservation</span>
-    </a>
-
-    <a href="#order-food" class="card v1">
-      <img src="https://img.icons8.com/color/48/restaurant.png" alt="Order Food On Train">
-      <span>E-Catering - Order Food On Train</span>
-    </a>
-  </div>
-
-</div>
-
-<section class="routes-section">
-  <h2 style="color:#004aad;">Popular <span>Routes</span></h2>
-  <p>Discover the most traveled routes across India with comfortable trains and great amenities</p>
-
-  <div class="row">
-
-    <div class="routes-grid">
-      <!-- Card 1 -->
-      <div class="route-card card1">
-        <h3><i class="fa-solid fa-location-dot"></i> New Delhi</h3>
-        <span class="rating"><i class="fa-solid fa-star"></i> 4.5</span>
-        <div class="details">to <i class="fa-solid fa-location-dot"></i> Mumbai Central</div>
-        <div class="details"><i class="fa-regular fa-clock"></i> 16h 35m &nbsp; | &nbsp; 12+ trains</div>
-        <div class="price">Starting from ₹1,200</div>
-        <button class="btn">Book Now</button>
+    <div class="footer-bottom">
+      <p>© 2024 Indian Railway Catering and Tourism Corporation Ltd. All rights reserved.</p>
+      <p>A Government of India Enterprise | Ministry of Railways</p>
+      <div class="bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
       </div>
-
-      <!-- Card 2 -->
-      <div class="route-card card2">
-        <h3><i class="fa-solid fa-location-dot"></i> Bangalore</h3>
-        <span class="rating"><i class="fa-solid fa-star"></i> 4.3</span>
-        <div class="details">to <i class="fa-solid fa-location-dot"></i> Chennai Central</div>
-        <div class="details"><i class="fa-regular fa-clock"></i> 4h 45m &nbsp; | &nbsp; 8+ trains</div>
-        <div class="price">Starting from ₹450</div>
-        <button class="btn">Book Now</button>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="route-card card3">
-        <h3><i class="fa-solid fa-location-dot"></i> Kolkata</h3>
-        <span class="rating"><i class="fa-solid fa-star"></i> 4.4</span>
-        <div class="details">to <i class="fa-solid fa-location-dot"></i> New Delhi</div>
-        <div class="details"><i class="fa-regular fa-clock"></i> 17h 20m &nbsp; | &nbsp; 10+ trains</div>
-        <div class="price">Starting from ₹1,100</div>
-        <button class="btn">Book Now</button>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="route-card card4">
-        <h3><i class="fa-solid fa-location-dot"></i> Mumbai Central</h3>
-        <span class="rating"><i class="fa-solid fa-star"></i> 4.6</span>
-        <div class="details">to <i class="fa-solid fa-location-dot"></i> Goa</div>
-        <div class="details"><i class="fa-regular fa-clock"></i> 8h 15m &nbsp; | &nbsp; 6+ trains</div>
-        <div class="price">Starting from ₹650</div>
-        <button class="btn">Book Now</button>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="route-card card5">
-        <h3><i class="fa-solid fa-location-dot"></i> Hyderabad</h3>
-        <span class="rating"><i class="fa-solid fa-star"></i> 4.2</span>
-        <div class="details">to <i class="fa-solid fa-location-dot"></i> Bangalore</div>
-        <div class="details"><i class="fa-regular fa-clock"></i> 12h 30m &nbsp; | &nbsp; 5+ trains</div>
-        <div class="price">Starting from ₹800</div>
-        <button class="btn">Book Now</button>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="route-card card6">
-        <h3><i class="fa-solid fa-location-dot"></i> Chennai Central</h3>
-        <span class="rating"><i class="fa-solid fa-star"></i> 4.5</span>
-        <div class="details">to <i class="fa-solid fa-location-dot"></i> Coimbatore</div>
-        <div class="details"><i class="fa-regular fa-clock"></i> 6h 45m &nbsp; | &nbsp; 7+ trains</div>
-        <div class="price">Starting from ₹380</div>
-        <button class="btn">Book Now</button>
-      </div>
+      <p class="listed">Listed on BSE & NSE | BSE Code: 542830 | NSE Symbol: IRCTC</p>
     </div>
-
-  </div>
-
-</section>
-
-
-<section class="how-it-works">
-  <h2>How It <span>Works</span></h2>
-  <p>Book your train tickets in just 4 simple steps and enjoy a seamless travel experience</p>
-
-  <div class="steps-container">
-    <!-- Step 1 -->
-    <div class="step-card">
-      <div class="step-icon blue"><i class="fas fa-search"></i></div>
-      <div class="step-number">1</div>
-      <h3>Search Trains</h3>
-      <p>Enter your travel details and search for available trains on your route</p>
-    </div>
-
-    <!-- Step 2 -->
-    <div class="step-card">
-      <div class="step-icon orange"><i class="fas fa-ticket-alt"></i></div>
-      <div class="step-number">2</div>
-      <h3>Select Your Journey</h3>
-      <p>Choose your preferred train, class, and seat preferences from available options</p>
-    </div>
-
-    <!-- Step 3 -->
-    <div class="step-card">
-      <div class="step-icon blue"><i class="fas fa-credit-card"></i></div>
-      <div class="step-number">3</div>
-      <h3>Secure Payment</h3>
-      <p>Complete your booking with our secure payment gateway and multiple payment options</p>
-    </div>
-
-    <!-- Step 4 -->
-    <div class="step-card">
-      <div class="step-icon orange"><i class="fas fa-check-circle"></i></div>
-      <div class="step-number">4</div>
-      <h3>Get Your E-Ticket</h3>
-      <p>Receive your confirmed e-ticket instantly via email and SMS for hassle-free travel</p>
-    </div>
-  </div>
-</section>
-
-
-<section class="why-section">
-  <h2>Why Choose IRCTC ?</h2>
-  <p>Experience the most trusted and convenient way to book train tickets with unmatched service quality</p>
-
-  <div class="features">
-    <div class="feature-card">
-      <div class="icon">🔒</div>
-      <h3>100% Secure</h3>
-      <p>Your data and transactions are protected with bank-grade security</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="icon">⏰</div>
-      <h3>24/7 Booking</h3>
-      <p>Book tickets anytime, anywhere with our round-the-clock service</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="icon">💳</div>
-      <h3>Multiple Payments</h3>
-      <p>Pay via UPI, cards, net banking, or wallets - whatever suits you</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="icon">👥</div>
-      <h3>10M+ Happy Customers</h3>
-      <p>Join millions of satisfied travelers who trust our platform</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="icon">🏷️</div>
-      <h3>Best Price Guarantee</h3>
-      <p>Get the best deals and competitive pricing on all routes</p>
-    </div>
-
-    <div class="feature-card">
-      <div class="icon">🎧</div>
-      <h3>Expert Support</h3>
-      <p>Get assistance from our dedicated customer support team</p>
-    </div>
-  </div>
-
-  <div class="stats">
-    <div class="stat">
-      <h3>50L+</h3>
-      <p>Tickets Booked</p>
-    </div>
-    <div class="stat">
-      <h3>99.9%</h3>
-      <p>Success Rate</p>
-    </div>
-    <div class="stat">
-      <h3>24/7</h3>
-      <p>Customer Support</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-
-    <div class="footer-col about">
-      <h3><img src="img/icon.jpg" alt="IRCTC Logo" class="logo"> IRCTC</h3>
-      <p>
-        Indian Railway Catering & Tourism Corporation<br>
-        A "Navratna" Central Public Sector Enterprise under the Ministry of Railways, Government of India,
-        dedicated to enhancing railway travel experience since 1999.
-      </p>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-    </div>
-
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">News & Updates</a></li>
-        <li><a href="#">Investor Relations</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Our Services</h4>
-      <ul>
-        <li><a href="#">Rail Ticket Booking</a></li>
-        <li><a href="#">Food on Track</a></li>
-        <li><a href="#">Tourism Packages</a></li>
-        <li><a href="#">Rail Neer</a></li>
-        <li><a href="#">Catering Services</a></li>
-        <li><a href="#">E-Catering</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Contact & Investors</h4>
-      <p><i class="fas fa-map-marker-alt" style="color: #ff8c00;"></i> IRCTC Corporate Office, New Delhi, India</p>
-      <p><i class="fas fa-phone-alt" style="color: #ff8c00;"></i> 1800-1034-139</p>
-      <p><i class="fas fa-envelope" style="color: #ff8c00;"></i> care@irctc.co.in</p>
-      <h5>Investor Relations</h5>
-      <ul>
-        <li><a href="#">Annual Reports</a></li>
-        <li><a href="#">Financial Results</a></li>
-        <li><a href="#">Board Meetings</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <p>© 2024 Indian Railway Catering and Tourism Corporation Ltd. All rights reserved.</p>
-    <p>A Government of India Enterprise | Ministry of Railways</p>
-    <div class="bottom-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">Sitemap</a>
-    </div>
-    <p class="listed">Listed on BSE & NSE | BSE Code: 542830 | NSE Symbol: IRCTC</p>
-  </div>
 </footer>
 
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navbar = document.querySelector('.navbar');
+
+  menuToggle.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+  });
+</script>
+
+<script>
+    const tabs = document.querySelectorAll(".tab");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            // remove active classes
+            tabs.forEach(t => t.classList.remove("active"));
+            tabContents.forEach(c => c.classList.remove("active"));
+
+            // add active to clicked
+            tab.classList.add("active");
+            document.getElementById(tab.dataset.tab).classList.add("active");
+        });
+    });
+
+</script>
 
 </body>
 </html>

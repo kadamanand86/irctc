@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Flight Booking</title>
+
+    <style>
+
+      /*Header*/
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Trirong", serif;
+      line-height: 1.6;
+      color: #222;
+      background: #fff;
+      padding-top: 90px;
+    }
+
+    header {
+      background-color: aliceblue;
+      border-bottom: 1px solid #eee;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+    .nav-container {
+      max-width: 100%;
+      margin: auto;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-left img {
+      height: 70px;
+      box-shadow: 0px 0px 4px 0px #999999;
+      border-radius: 100px;
+    }
+    .navbar ul {
+      display: flex;
+      gap: 50px;
+      list-style: none;
+    }
+    .navbar ul li a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 14px;
+      color: #333;
+      padding: 15px 15px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    .navbar ul li a i {
+      font-size: 20px;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .navbar ul li a:hover,
+    .navbar ul li.active a {
+      background: linear-gradient(to right, #c3ddff, #ffe1bc);
+      color: #004aad;
+    }
+    .navbar ul li a:hover i,
+    .navbar ul li.active a i {
+      color: #004aad;
+    }
+    .nav-right a {
+      padding: 8px 16px;
+      margin-left: 10px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .btn-outline {
+      border: 2px solid #ff8c00;
+      color: #ff8c00;
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: #ff8c00; color: #fff;
+    }
+    .btn-primaryLog {
+      background: #ff8c00; color: #fff;
+      padding: 8px 16px;
+      margin-left: 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      }
+      .btn-primaryLog:hover {
+        background: #e67600;
+      }
+
+      @media (max-width: 768px) {
+        .navbar{
+          display: none;
+        }
+      }
+
+    /* Footer */
+    .footer {
+      background: #2b2f38;
+      color: #ddd;
+      padding: 50px 20px 20px;
+    }
+    .footer .container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+    .logo {
+      width: 28px;
+      height: auto;
+      border-radius: 30px;
+    }
+    .footer h3, .footer h4, .footer h5 {color: #fff;}
+    .footer-col ul {list-style: none; padding: 0;}
+    .footer-col ul li {margin-bottom: 8px;}
+    .footer-col ul li a {text-decoration: none; color: #bbb; font-size: 14px;}
+    .footer-col ul li a:hover {color: #fff;}
+    .social-icons {display: flex; gap: 12px; margin-top: 15px;}
+    .social-icons a {color: #fff; font-size: 18px; transition: 0.3s;}
+    .social-icons a:hover {color: #ff6600;}
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
+      color: #aaa;
+      border-top: 1px solid #444;
+      padding-top: 20px;
+    }
+    .footer-bottom .bottom-links a {
+      margin: 0 10px;
+      color: #bbb;
+      font-size: 13px;
+    }
+    .footer-bottom .bottom-links a:hover {color: #fff;}
+
+
+    /* Mobile menu toggle button */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    /* Mobile view */
+    @media (max-width: 768px) {
+
+      .navbar {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: aliceblue;
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+      .navbar ul {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .navbar ul li {
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      /* Show menu when active */
+      .navbar.active {
+        display: flex;
+      }
+    }
+
+
+    .hero {
+      background: linear-gradient(135deg, #1e2c4d, #703030);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      margin: 15px auto;
+      max-width: 650px;
+      font-size: 1rem;
+    }
+
+    .hero .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: var(--btn-brown);
+      color: #fff;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #223c78;
+    }
+
+    section p.lead {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 40px;
+      font-size: 1rem;
+    }
+
+    .train-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .train-card {
+      border-radius: 10px;
+      box-shadow: 0 2px 3px rgb(0 0 0 / 50%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .train-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .train-content {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rating {
+      color: #f5c74d;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .train-content h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .train-content p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .train-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .features {
+      margin-bottom: 16px;
+    }
+
+    .features strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #223c78;
+    }
+
+    .features ul {
+      list-style: none;
+      columns: 2;
+      gap: 12px;
+      padding: 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .features ul li {
+      margin-bottom: 6px;
+    }
+
+    .explore-btn {
+      background: #223c78;
+      color: #fff;
+      padding: 10px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      margin-top: auto;
+    }
+
+    .explore-btn:hover {
+      background: #1a2f61;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      section h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+
+    :root {
+          --primary: #1e3a8a; /* deep blue */
+          --secondary: #7f1d1d; /* dark red */
+          --muted: #6b7280; /* gray */
+          --card-bg: #ffffff;
+          --shadow: 0 4px 14px rgba(0,0,0,0.08);
+          --radius: 14px;
+        }
+    section {
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    section p.lead {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 40px;
+      font-size: 1rem;
+    }
+
+    /* grid for 6 cards */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background:var(--card-bg);
+      border-radius: 10px;
+      min-width:320px;            /* each card width on small screens */
+      flex:0 0 320px;             /* prevents wrapping; keeps single row */
+      display:flex;
+      flex-direction:column;
+      padding:22px;
+      position:relative;
+      transition:transform .18s ease, box-shadow .18s ease;
+      border-top: 1px solid rgb(145 145 145 / 15%);
+      box-shadow: 0 2px 3px rgb(0 0 0 / 50%);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .service-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .service-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      color: #444;
+    }
+
+    .capacity {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .features {
+      margin-bottom: 16px;
+    }
+
+    .features strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+
+    .features ul {
+      list-style: disc inside;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0;
+      padding: 0;
+    }
+
+    .features ul li {
+      margin-bottom: 5px;
+    }
+
+    .reserve-btn {
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+    }
+
+    .reserve-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* responsive */
+    @media (max-width: 992px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .features ul {
+      list-style-type: disc;
+      list-style-position: outside; /* keeps bullets aligned */
+      margin: 0;
+      padding-left: 20px; /* indent so all li text aligns */
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .features ul li {
+      margin-bottom: 6px;
+    }
+
+
+    section p.lead {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      font-size: 1rem;
+    }
+
+    /* Top package cards */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto 60px;
+    }
+
+    .package-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border-top: 1px solid rgb(145 145 145 / 15%);
+      box-shadow: 0 2px 3px rgb(0 0 0 / 50%);
+      padding: 20px;
+      text-align: left;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .package-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .package-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+
+    .package-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .package-card p {
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+      color: #444;
+    }
+
+    .package-card .duration {
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .highlights {
+      margin-bottom: 16px;
+    }
+
+    .highlights strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+
+    .highlights ul {
+      list-style-type: disc;
+      list-style-position: outside;
+      padding-left: 18px;
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .highlights li {
+      margin-bottom: 5px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--secondary);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    /* Featured packages */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 35px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .featured-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border-top: 1px solid rgb(145 145 145 / 15%);
+      box-shadow: 0 2px 3px rgb(0 0 0 / 50%);
+      padding: 20px;
+      text-align: left;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .featured-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+
+    .package-code {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .details {
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      color: #444;
+    }
+
+    .upcoming {
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    .inclusions {
+      margin-bottom: 14px;
+    }
+
+    .inclusions strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--primary);
+    }
+
+    .inclusions span {
+      display: inline-block;
+      background: #f3f4f6;
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      margin: 3px 5px 3px 0;
+    }
+
+    .book-btn {
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+    }
+
+    .book-btn:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      section h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+
+    /* Stay Options */
+    .stay-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto 60px;
+    }
+
+    .stay-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      text-align: left;
+    }
+
+    .stay-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+    }
+
+    .stay-card h3 i {
+      color: var(--secondary);
+    }
+
+    .stay-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .stay-card p {
+      font-size: 0.9rem;
+      color: #444;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--secondary);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .btn.reset {
+      background: #f3f4f6;
+      color: var(--muted);
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: #fff;
+      border-radius: var(--radius);
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+
+    .testimonial-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .testimonial-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      text-align: left;
+      width: 100%;
+      max-width: 300px; /* ✅ fixed max width */
+      flex: 1 1 300px;  /* allows responsiveness */
+    }
+
+    .testimonial-card .stars {
+      color: #fbbf24; /* gold */
+      margin-bottom: 10px;
+    }
+
+    .testimonial-card p {
+      font-size: 0.9rem;
+      color: #444;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .author-info {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .author-info strong {
+      display: block;
+      color: #222;
+    }
+
+    /* Awards */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 40px auto 0;
+    }
+
+    .award-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      text-align: left;
+    }
+
+    .award-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+    }
+
+    .award-card h3 i {
+      color: var(--secondary);
+    }
+
+    .award-card p {
+      font-size: 0.85rem;
+      color: #444;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 640px) {
+      section h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+
+
+     </style>
+</head>
+<body>
+
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="index.html"><img src="img/logo1.png" alt="Logo"></a>
+      </div>
+      
+      <nav class="navbar">
+        <ul>
+          <li><a href="train.html"><i class="fas fa-train"></i><span>Trains</span></a></li>
+          <li><a href="bus.html"><i class="fas fa-bus"></i><span>Bus</span></a></li>
+          <li><a href="flight.html"><i class="fas fa-plane"></i><span>Flights</span></a></li>
+          <li><a href="hotels.html"><i class="fas fa-hotel"></i><span>Hotels</span></a></li>
+          <li class="active"><a href="holiday.html"><i class="fas fa-umbrella-beach"></i><span>Holidays</span></a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-right">
+        <a href="#" class="btn-outline"><i class="fa fa-language"></i> Language</a>
+        <a href="#" class="btn-primaryLog"><i class="fa fa-user-circle-o"></i> Login</a>
+      </div>
+
+      <!-- Mobile menu toggle -->
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="hero">
+    <h1>Premium Train Journeys</h1>
+    <p>Discover India's magnificent heritage through luxury train experiences, premium tour packages, and comfortable stay options</p>
+    <div class="buttons">
+      <button class="btn btn-primary">⭐ Explore Luxury Trains</button>
+      <button class="btn btn-secondary">⚪ View Tour Packages</button>
+    </div>
+  </div>
+
+  <section>
+    <h2>Luxury Train Experiences</h2>
+    <p class="lead">Journey through India's most spectacular destinations aboard world-class luxury trains, each offering unique themes and unforgettable experiences</p>
+
+    <div class="train-cards">
+      <div class="train-card">
+        <img src="img/bharat-gaurav.jpg" alt="Bharat Gaurav Trains">
+        <div class="train-content">
+          <div class="rating">⭐ 4.6/5</div>
+          <h3>Bharat Gaurav Trains</h3>
+          <p>Experience the cultural diversity and heritage of India through themed train journeys that showcase the country's rich history, traditions, and spiritual significance.</p>
+          <div class="train-meta">🚆 Pan India Routes • 📅 3-21 Days</div>
+          <div class="features">
+            <strong>Premium Features:</strong>
+            <ul>
+              <li>Cultural Heritage Tours</li>
+              <li>Onboard Entertainment</li>
+              <li>Traditional Cuisine</li>
+              <li>Spiritual Journeys</li>
+              <li>Expert Guides</li>
+            </ul>
+          </div>
+          <button class="explore-btn">Explore Journey</button>
+        </div>
+      </div>
+
+      <div class="train-card">
+        <img src="img/maharajas-express.jpg" alt="Maharaja's Express">
+        <div class="train-content">
+          <div class="rating">⭐ 4.9/5</div>
+          <h3>Maharajas' Express</h3>
+          <p>Embark on the most luxurious train journey in India, offering royal treatment with world-class amenities, fine dining, and exclusive access to India's most magnificent destinations.</p>
+          <div class="train-meta">🚆 Golden Triangle & Rajasthan • 📅 3-7 Days</div>
+          <div class="features">
+            <strong>Premium Features:</strong>
+            <ul>
+              <li>Presidential Suite</li>
+              <li>Fine Dining</li>
+              <li>Cultural Performances</li>
+              <li>Butler Service</li>
+              <li>Spa & Wellness</li>
+              <li>Heritage Sites Access</li>
+            </ul>
+          </div>
+          <button class="explore-btn">Explore Journey</button>
+        </div>
+      </div>
+
+      <div class="train-card">
+        <img src="img/goldenchariot.jpg" alt="The Golden Chariot">
+        <div class="train-content">
+          <div class="rating">⭐ 4.7/5</div>
+          <h3>The Golden Chariot</h3>
+          <p>Discover South India's architectural marvels, ancient temples, and royal palaces aboard this luxury train that combines modern comfort with traditional Southern hospitality.</p>
+          <div class="train-meta">🚆 Karnataka & Goa • 📅 6-7 Days</div>
+          <div class="features">
+            <strong>Premium Features:</strong>
+            <ul>
+              <li>Luxury Suites</li>
+              <li>Lounge Car</li>
+              <li>Cultural Programs</li>
+              <li>Multi-cuisine Restaurant</li>
+              <li>Spa Services</li>
+              <li>Heritage Exploration</li>
+            </ul>
+          </div>
+          <button class="explore-btn">Explore Journey</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section style="background: linear-gradient(to right, #c3ddff, #ffe1bc);">
+      <h2>Maharaja Express Services</h2>
+      <p class="lead">Experience unparalleled luxury with our premium accommodations and exclusive services aboard the world's most luxurious train</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <h3><i class="fa-solid fa-bed"></i> &nbsp;Lounge Bar</h3>
+          <div class="service-sub">Maharaja Express Service</div>
+          <p>Elegant bar car featuring premium spirits, fine wines, and signature cocktails served in a sophisticated ambiance.</p>
+          <div class="capacity">Capacity: 30 guests</div>
+          <div class="features">
+            <strong>Features:</strong>
+            <ul>
+              <li>Premium Spirits</li>
+              <li>Fine Wines</li>
+              <li>Signature Cocktails</li>
+              <li>Live Entertainment</li>
+              <li>Panoramic Views</li>
+            </ul>
+          </div>
+          <button class="reserve-btn">Reserve Now</button>
+        </div>
+
+        <div class="service-card">
+          <h3><i class="fa-solid fa-couch"></i> &nbsp;Deluxe Cabin</h3>
+          <div class="service-sub">Maharaja Express Service</div>
+          <p>Comfortable twin-bedded cabin with modern amenities and tasteful décor for a relaxing journey experience.</p>
+          <div class="capacity">Capacity: 2 guests</div>
+          <div class="features">
+            <strong>Features:</strong>
+            <ul>
+              <li>Twin Beds</li>
+              <li>Private Bathroom</li>
+              <li>AC Climate Control</li>
+              <li>Storage Space</li>
+              <li>Reading Lights</li>
+            </ul>
+          </div>
+          <button class="reserve-btn">Reserve Now</button>
+        </div>
+
+        <div class="service-card">
+          <h3><i class="fa-solid fa-crown"></i> &nbsp;Junior Suite</h3>
+          <div class="service-sub">Maharaja Express Service</div>
+          <p>Spacious suite with separate living area, offering enhanced comfort and luxury for discerning travelers.</p>
+          <div class="capacity">Capacity: 2 guests</div>
+          <div class="features">
+            <strong>Features:</strong>
+            <ul>
+              <li>Separate Living Area</li>
+              <li>King Size Bed</li>
+              <li>Mini Bar</li>
+              <li>Premium Amenities</li>
+              <li>Butler Service</li>
+            </ul>
+          </div>
+          <button class="reserve-btn">Reserve Now</button>
+        </div>
+
+        <div class="service-card">
+          <h3><i class="fa-solid fa-gem"></i> &nbsp;Suite</h3>
+          <div class="service-sub">Maharaja Express Service</div>
+          <p>Luxurious suite featuring elegant furnishings, premium amenities, and personalized service for ultimate comfort.</p>
+          <div class="capacity">Capacity: 2 guests</div>
+          <div class="features">
+            <strong>Features:</strong>
+            <ul>
+              <li>Premium Furnishings</li>
+              <li>Spacious Layout</li>
+              <li>Personal Safe</li>
+              <li>Luxury Amenities</li>
+              <li>Dedicated Butler</li>
+            </ul>
+          </div>
+          <button class="reserve-btn">Reserve Now</button>
+        </div>
+
+        <div class="service-card">
+          <h3><i class="fa-solid fa-utensils"></i> &nbsp;Presidential Suite</h3>
+          <div class="service-sub">Maharaja Express Service</div>
+          <p>The pinnacle of luxury travel, offering unparalleled space, opulent décor, and exclusive privileges.</p>
+          <div class="capacity">Capacity: 2 guests</div>
+          <div class="features">
+            <strong>Features:</strong>
+            <ul>
+              <li>Opulent Décor</li>
+              <li>Maximum Space</li>
+              <li>Exclusive Privileges</li>
+              <li>Premium Butler Service</li>
+              <li>Private Dining</li>
+            </ul>
+          </div>
+          <button class="reserve-btn">Reserve Now</button>
+        </div>
+
+        <div class="service-card">
+          <h3>Royal Dining</h3>
+          <div class="service-sub">Maharaja Express Service</div>
+          <p>Exquisite dining car with multi-cuisine gourmet dishes, fine wines, and elegant décor to elevate your journey.</p>
+          <div class="capacity">Capacity: 40 guests</div>
+          <div class="features">
+            <strong>Features:</strong>
+            <ul>
+              <li>Gourmet Dining</li>
+              <li>Multi-Cuisine Menu</li>
+              <li>Elegant Décor</li>
+              <li>Fine Wines</li>
+              <li>Attentive Service</li>
+            </ul>
+          </div>
+          <button class="reserve-btn">Reserve Now</button>
+        </div>
+      </div>
+  </section>
+
+
+   <!-- Tour Packages -->
+  <section>
+    <h2>Tour Packages</h2>
+    <p class="lead">Choose from carefully crafted domestic and international tour packages designed to showcase the best destinations and cultural experiences</p>
+
+    <div class="packages-grid">
+      <div class="package-card">
+        <h3>Domestic Package</h3>
+        <div class="package-sub">Premium Travel Experience</div>
+        <p>Explore India’s diverse landscapes, rich cultural heritage, and historic monuments through carefully curated domestic train journeys.</p>
+        <div class="duration">⏱ 5–15 Days | From ₹25,000</div>
+        <div class="highlights">
+          <strong>Package Highlights:</strong>
+          <ul>
+            <li>Heritage & Cultural Sites</li>
+            <li>Hill Station Retreats</li>
+            <li>Wildlife Sanctuaries</li>
+            <li>Pilgrimage Destinations</li>
+            <li>Royal Palaces & Forts</li>
+          </ul>
+        </div>
+        <a href="#" class="btn" style="background:#ff8c00;">View Package Details</a>
+      </div>
+
+      <div class="package-card">
+        <h3>International Package</h3>
+        <div class="package-sub">Premium Travel Experience</div>
+        <p>Cross-border luxury train experiences connecting India with neighbors through cultural exchanges and breathtaking landscapes.</p>
+        <div class="duration">⏱ 7–21 Days | From ₹55,000</div>
+        <div class="highlights">
+          <strong>Package Highlights:</strong>
+          <ul>
+            <li>Cross-border Journeys</li>
+            <li>International Cuisine</li>
+            <li>Cultural Exchange Programs</li>
+            <li>Scenic Mountain Routes</li>
+            <li>Heritage Silk Route</li>
+          </ul>
+        </div>
+        <a href="#" class="btn" style="background:#ff8c00;">View Package Details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Tour Packages -->
+  <section style="margin-top: -90px;background: linear-gradient(to right, #c3ddff, #ffe1bc);">
+    <h2>Featured Tour Packages</h2>
+    <p class="lead">Discover our specially curated journeys with detailed itineraries</p>
+
+    <div class="featured-grid">
+      <div class="featured-card">
+        <h3>RAMESHWARAM ONE DAY TRIP</h3>
+        <div class="package-code">Package Code: SMH109</div>
+        <div class="details">📅 1 Day | 📆 Daily</div>
+        <div class="details">📍 Chennai ➝ Rameshwaram</div>
+        <div class="upcoming">Upcoming Journey: 01-OCT-25</div>
+        <div class="inclusions">
+          <strong>Inclusions:</strong>
+          <span>Road Transport</span><span>Cab</span><span>Insurance</span>
+        </div>
+        <button class="book-btn">Book Now</button>
+      </div>
+
+      <div class="featured-card">
+        <h3>GOLDEN TRIANGLE HERITAGE</h3>
+        <div class="package-code">Package Code: GTH205</div>
+        <div class="details">📅 5 Days | 📆 Weekly</div>
+        <div class="details">📍 Delhi ➝ Agra ➝ Jaipur</div>
+        <div class="upcoming">Upcoming Journey: 10-OCT-25</div>
+        <div class="inclusions">
+          <strong>Inclusions:</strong>
+          <span>Train Transport</span><span>Hotel</span><span>Meals</span><span>Guide</span>
+        </div>
+        <button class="book-btn">Book Now</button>
+      </div>
+
+      <div class="featured-card">
+        <h3>KERALA BACKWATER EXPRESS</h3>
+        <div class="package-code">Package Code: KBE307</div>
+        <div class="details">📅 7 Days | 📆 Bi-weekly</div>
+        <div class="details">📍 Kochi ➝ Alleppey</div>
+        <div class="upcoming">Upcoming Journey: 15-OCT-25</div>
+        <div class="inclusions">
+          <strong>Inclusions:</strong>
+          <span>Houseboat</span><span>Meals</span><span>Local Transport</span><span>Guide</span>
+        </div>
+        <button class="book-btn">Book Now</button>
+      </div>
+
+      <div class="featured-card">
+        <h3>SILK ROUTE ADVENTURE</h3>
+        <div class="package-code">Package Code: SRAB14</div>
+        <div class="details">📅 14 Days | 📆 Monthly</div>
+        <div class="details">📍 Delhi ➝ Tashkent</div>
+        <div class="upcoming">Upcoming Journey: 20-OCT-25</div>
+        <div class="inclusions">
+          <strong>Inclusions:</strong>
+          <span>International Train</span><span>Visa Support</span><span>Hotels</span><span>Meals</span>
+        </div>
+        <button class="book-btn">Book Now</button>
+      </div>
+
+      <div class="featured-card">
+        <h3>HIMALAYAN TRANS JOURNEY</h3>
+        <div class="package-code">Package Code: HT410</div>
+        <div class="details">📅 10 Days | 📆 Seasonal</div>
+        <div class="details">📍 Delhi ➝ Lhasa</div>
+        <div class="upcoming">Upcoming Journey: 30-OCT-25</div>
+        <div class="inclusions">
+          <strong>Inclusions:</strong>
+          <span>High Altitude Train</span><span>Oxygen Support</span><span>Hotels</span><span>Guide</span>
+        </div>
+        <button class="book-btn">Book Now</button>
+      </div>
+
+      <div class="featured-card">
+        <h3>MEKONG RIVER CROSSING</h3>
+        <div class="package-code">Package Code: MRC612</div>
+        <div class="details">📅 12 Days | 📆 Monthly</div>
+        <div class="details">📍 Kolkata ➝ Hanoi</div>
+        <div class="upcoming">Upcoming Journey: 05-NOV-25</div>
+        <div class="inclusions">
+          <strong>Inclusions:</strong>
+          <span>Cross-border Train</span><span>River Cruise</span><span>Cultural Tours</span><span>Hotels</span>
+        </div>
+        <button class="book-btn">Book Now</button>
+      </div>
+    </div>
+  </section>
+
+   <!-- Stay Options -->
+  <section>
+    <h2>Stay Options</h2>
+    <p class="lead">Comfortable accommodation and relaxation facilities at railway stations to enhance your travel experience with convenience and comfort</p>
+
+    <div class="stay-grid">
+      <!-- Retiring Room -->
+      <div class="stay-card">
+        <h3><i class="fa-solid fa-bed"></i> Retiring Room</h3>
+        <div class="stay-sub">Railway Accommodation</div>
+        <p>Comfortable accommodation facilities available at major railway stations for passengers during transit or extended layovers.</p>
+        <div class="form-group">
+          <input type="text" placeholder="Enter your PNR number">
+        </div>
+        <button class="btn" style="background:#ff8c00;">Check Availability</button>
+      </div>
+
+      <!-- Lounge -->
+      <div class="stay-card">
+        <h3><i class="fa-solid fa-couch"></i> Lounge</h3>
+        <div class="stay-sub">Railway Accommodation</div>
+        <p>Premium waiting areas at select railway stations offering comfortable seating, refreshments, and business facilities.</p>
+        <div class="form-group">
+          <input type="text" placeholder="Enter station name">
+        </div>
+        <div class="form-group">
+          <select>
+            <option>Select lounge type</option>
+            <option>Executive Lounge</option>
+            <option>Business Lounge</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select>
+            <option>Select number of persons</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3+</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button class="btn reset">Reset</button>
+          <button class="btn" style="background:#ff8c00;">Check Availability</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section style="margin-top: -100px;">
+    <h2>🙌 What Our Guests Say</h2>
+    <p class="lead">Hear from travelers who have experienced the magic of luxury train journeys and discovered India's incredible heritage</p>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>“The Maharaja Express exceeded all expectations. The luxury, service, and cultural experiences were absolutely magnificent.”</p>
+        <div class="author">
+          <div class="author-avatar">R</div>
+          <div class="author-info">
+            <strong>Rajesh Kumar</strong>
+            Mumbai, India
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>“Incredible journey through India’s heritage. The Golden Chariot offered perfect comfort and breathtaking destinations. Highly recommended!”</p>
+        <div class="author">
+          <div class="author-avatar">S</div>
+          <div class="author-info">
+            <strong>Sarah Williams</strong>
+            London, UK
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★★★★☆</div>
+        <p>“The Bharat Gaurav train provided an authentic cultural experience. Great value for money and excellent hospitality throughout the journey.”</p>
+        <div class="author">
+          <div class="author-avatar">D</div>
+          <div class="author-info">
+            <strong>David Chen</strong>
+            Singapore
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section style="margin-top: -40px;">
+    <h2>🏆 Awards & Recognition</h2>
+    <p class="lead">Our commitment to excellence has been recognized by prestigious organizations and industry leaders worldwide</p>
+
+    <div class="awards-grid">
+      <div class="award-card">
+        <h3><i class="fa-solid fa-trophy"></i> World’s Leading Luxury Train</h3>
+        <p>Maharaja Express recognized for exceptional luxury travel experience and world-class service standards (World Travel Awards - 2023).</p>
+      </div>
+
+      <div class="award-card">
+        <h3><i class="fa-solid fa-award"></i> Best Heritage Tourism Initiative</h3>
+        <p>Bharat Gaurav trains awarded for promoting India’s rich cultural heritage (Ministry of Tourism, India - 2022).</p>
+      </div>
+
+      <div class="award-card">
+        <h3><i class="fa-solid fa-medal"></i> Excellence in Hospitality</h3>
+        <p>Golden Chariot recognized for outstanding service and authentic South Indian hospitality (Indian Railway Tourism Corporation - 2023).</p>
+      </div>
+    </div>
+  </section>
+
+
+
+ <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-col about">
+        <h3><img src="img/icon.jpg" alt="IRCTC Logo" class="logo"> IRCTC</h3>
+        <p>
+          Indian Railway Catering & Tourism Corporation<br>
+          A "Navratna" Central Public Sector Enterprise under the Ministry of Railways, Government of India,
+          dedicated to enhancing railway travel experience since 1999.
+        </p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">News & Updates</a></li>
+          <li><a href="#">Investor Relations</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#">Rail Ticket Booking</a></li>
+          <li><a href="#">Food on Track</a></li>
+          <li><a href="#">Tourism Packages</a></li>
+          <li><a href="#">Rail Neer</a></li>
+          <li><a href="#">Catering Services</a></li>
+          <li><a href="#">E-Catering</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact & Investors</h4>
+        <p><i class="fas fa-map-marker-alt" style="color: #ff8c00;"></i> IRCTC Corporate Office, New Delhi, India</p>
+        <p><i class="fas fa-phone-alt" style="color: #ff8c00;"></i> 1800-1034-139</p>
+        <p><i class="fas fa-envelope" style="color: #ff8c00;"></i> care@irctc.co.in</p>
+        <h5>Investor Relations</h5>
+        <ul>
+          <li><a href="#">Annual Reports</a></li>
+          <li><a href="#">Financial Results</a></li>
+          <li><a href="#">Board Meetings</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Indian Railway Catering and Tourism Corporation Ltd. All rights reserved.</p>
+      <p>A Government of India Enterprise | Ministry of Railways</p>
+      <div class="bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+      <p class="listed">Listed on BSE & NSE | BSE Code: 542830 | NSE Symbol: IRCTC</p>
+    </div>
+  </footer>
+
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navbar = document.querySelector('.navbar');
+
+    menuToggle.addEventListener('click', () => {
+      navbar.classList.toggle('active');
+    });
+  </script>
+
+  <script>
+      const tabs = document.querySelectorAll(".tab");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      tabs.forEach(tab => {
+          tab.addEventListener("click", () => {
+              // remove active classes
+              tabs.forEach(t => t.classList.remove("active"));
+              tabContents.forEach(c => c.classList.remove("active"));
+
+              // add active to clicked
+              tab.classList.add("active");
+              document.getElementById(tab.dataset.tab).classList.add("active");
+          });
+      });
+
+  </script>
+
+  <script>
+    const tripButtons = document.querySelectorAll(".trip-btn");
+    const returnDate = document.querySelector(".return-date");
+
+    tripButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // remove active from all
+        tripButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        if (btn.dataset.trip === "oneway") {
+          returnDate.style.display = "none";
+        } else {
+          returnDate.style.display = "block";
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
